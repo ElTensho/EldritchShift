@@ -1,6 +1,7 @@
-package net.tensho.dragonwaif;
+package net.tensho.eldritchshift;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -11,18 +12,24 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.tensho.eldritchshift.item.ModCreativeModTabs;
+import net.tensho.eldritchshift.item.ModItems;
 import org.slf4j.Logger;
 
-@Mod(DragonWaif.MOD_ID)
-public class DragonWaif
+@Mod(EldritchShift.MOD_ID)
+public class EldritchShift
 {
-    public static final String MOD_ID = "dragonwaif";
+    public static final String MOD_ID = "eldritchshift";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public DragonWaif(FMLJavaModLoadingContext context)
+    public EldritchShift(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+
+        ModCreativeModTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -37,7 +44,9 @@ public class DragonWaif
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+            event.accept(ModItems.eldritchhearth);
+        }
     }
 
     @SubscribeEvent
