@@ -8,13 +8,16 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tensho.eldritchshift.item.ModCreativeModTabs;
 import net.tensho.eldritchshift.item.ModItems;
 import org.slf4j.Logger;
+import com.github.alexthe666.iceandfire.IceAndFire; // de aqui accedo al ais end faier
 
 @Mod(EldritchShift.MOD_ID)
 public class EldritchShift

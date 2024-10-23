@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "eldritchshift:eldritch_hearth"
+    }
+  },
+  "result": {
+    "item": "minecraft:diamond_chestplate",
+    "count": 1
+  }
+}

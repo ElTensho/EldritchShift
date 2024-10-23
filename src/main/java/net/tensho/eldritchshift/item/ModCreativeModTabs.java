@@ -19,7 +19,7 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.eldritchtab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.eldritchhearth.get());
-                        output.accept(Items.NETHER_STAR);
+                        output.accept(ModItems.irondetector.get());
                     })
                     .build());
 

@@ -121,6 +121,19 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "CurseMaven"
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
@@ -136,6 +149,9 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    //implementation fg.deobf("curse.maven:citadel-331936:5633260")
+    implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5633453")
+
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
