@@ -13,7 +13,7 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, EldritchShift.MOD_ID);
 
     public static final RegistryObject<Item> eldritchhearth = ITEMS.register("eldritch_hearth", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> irondetector = ITEMS.register("iron_detector", () -> new diamondResonatorItem(new Item.Properties().durability(100)));
+    public static final RegistryObject<Item> irondetector = ITEMS.register("iron_detector", diamondResonatorItem::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
