@@ -21,7 +21,6 @@ import net.minecraft.world.level.storage.WorldData;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.tensho.eldritchshift.entities.CustomDragon;
 
 public class diamondResonatorItem extends Item {
     public diamondResonatorItem() {
@@ -31,7 +30,6 @@ public class diamondResonatorItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        CustomDragon dragon;
 
         if (!level.isClientSide) {
             Vec3 lookVec = player.getLookAngle();
@@ -48,14 +46,6 @@ public class diamondResonatorItem extends Item {
                 for (Entity entity : level.getEntitiesOfClass(Entity.class, player.getBoundingBox().expandTowards(lookVec.scale(10.0D)))) {
                     if (entity.getBoundingBox().intersects(player.getBoundingBox().expandTowards(lookVec.scale(10.0D))) && entity != player) {
                         player.sendSystemMessage(Component.literal("Apuntando a: " + entity.getName().getString()));
-                        if (entity.getName().getString() == "Piglin"){
-                            dragon = entity instanceof CustomDragon ? (CustomDragon) entity : null;
-                            boolean newState = !dragon.isHumanoid();
-                            dragon.setHumanoid(newState);
-                            player.sendSystemMessage(Component.literal("El dragon se ha transformado a: " + (newState ? "humanoide" : "dragon")));
-                            return super.use(level,player,hand);
-
-                        }
                         return InteractionResultHolder.fail(itemStack);
                     }
                 }

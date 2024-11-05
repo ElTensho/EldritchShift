@@ -17,10 +17,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.tensho.eldritchshift.entities.modEntities;
+import net.tensho.eldritchshift.entity.ModEnitties;
+import net.tensho.eldritchshift.entity.client.DragonoidRenderer;
 import net.tensho.eldritchshift.item.ModCreativeModTabs;
 import net.tensho.eldritchshift.item.ModItems;
-import net.tensho.eldritchshift.render.CustomDragonRenderer;
 import org.slf4j.Logger;
 //import com.github.alexthe666.iceandfire.IceAndFire; // de aqui accedo al ais end faier
 
@@ -43,7 +43,10 @@ public class EldritchShift
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        ModEnitties.register(modEventBus);
+
         modEventBus.addListener(this::addCreative);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -65,10 +68,15 @@ public class EldritchShift
     }
     @Mod.EventBusSubscriber(modid = EldritchShift.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public class ModEventSubscriber {
+
+    }
+    @Mod.EventBusSubscriber(modid = EldritchShift.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public class ClientModEvents {
         @SubscribeEvent
-        public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event){
-            //event.registerEntityRenderer(modEntities.CUSTOM_DRAGON.get(), CustomDragonRenderer::new);
+        public static void onClientSetup(FMLClientSetupEvent event){
+            EntityRenderers.register(ModEnitties.DRAGONOID.get(), DragonoidRenderer::new);
         }
+
     }
 
 }
